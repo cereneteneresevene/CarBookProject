@@ -1,0 +1,52 @@
+﻿@model List<CarListByBrandIdDto>
+@{
+    ViewData["Title"] = "GetCarListByBrandId";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><strong>@Model.FirstOrDefault()?.BrandName</strong> - Araç Listesi</h4>
+                        <p class="card-subtitle mb-4"></p>
+
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Marka</th>
+                                        <th>Araç Id</th>
+                                        <th>Model</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <th scope="row">@item.BrandName</th>
+                                            <th scope="row">@item.CarId</th>
+                                            <th scope="row"><img src="@item.CoverImageUrl" width="50" height="50" style="margin-right:10px;border-radius:25%" /> @item.Model</th>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="javascript:history.back()" class="btn btn-outline-primary">Geri Dön</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
